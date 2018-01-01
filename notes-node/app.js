@@ -1,3 +1,8 @@
+/* Activate 'nodemon':
+ * 1. install: npm install nodemon -g
+ * 2. activate: nodemon app.js;
+ */
+
 console.log("Starting app.js");
 
 const fs = require("fs");
@@ -35,5 +40,5 @@ console.log(`42 is string?: ${_.isString(42)}`);
 console.log(`true is string?: ${_.isString(true)}`);
 console.log(`"abc" is string?: ${_.isString("abc")}`);
 
-var someArray = [1, 1, 2, 3, 4, 2, 3, 3, 4, 4, 4];
+var someArray = [1, 1, 2, 3, 4, 2, 3, 3, 4, 4, 4, 42];
 console.log(`"Unique" of ${someArray}: ${_.uniq(someArray)}`);
