@@ -1,4 +1,5 @@
 console.log("Starting notes.js");
+const fs = require("fs");
 
 ////console.log(module);
 //module.exports.age = 25;
@@ -11,8 +12,22 @@ console.log("Starting notes.js");
 
 // arrow function doesn't bind 'this' and ...
 var addNote = (title, body) => {
-  console.log("addNote", title, body);
-  return "New Note";
+  var notes = [];
+  var note = {title, body};
+  try {
+    data = fs.readFileSync("notes-data.json");
+    notes = JSON.parse(data);
+  } catch (e) {
+    notes = [];
+  };
+
+  var duplicateNotes = notes.filter(n => n.title == title);
+
+  if (duplicateNotes.length === 0) {
+    notes.push(note);
+  }
+
+  fs.writeFileSync("notes-data.json", JSON.stringify(notes));
 };
 
 var getAll = () => {
