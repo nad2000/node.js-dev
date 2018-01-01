@@ -9,4 +9,8 @@ module.exports.addNote = () => { // loosly equivalent to anonymous func.: functi
   return "New Note";
 };
 
+module.exports.add = (a, b) => {
+  return a + b;
+};
+
 
