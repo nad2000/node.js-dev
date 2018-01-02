@@ -8,41 +8,54 @@ const fs = require("fs");
 //module.exports.add = (a, b) => {
 //  return a + b;
 //};
+//
+
+var fetchNotes = () => {
+  try {
+    data = fs.readFileSync("notes-data.json");
+    return JSON.parse(data);
+  } catch (e) {
+    return [];
+  };
+};
+
+var saveNotes = (notes) => {
+  fs.writeFileSync("notes-data.json", JSON.stringify(notes));
+};
 
 
 // arrow function doesn't bind 'this' and ...
 var addNote = (title, body) => {
-  var notes = [];
+  var notes = fetchNotes();
   var note = {title, body};
-  try {
-    data = fs.readFileSync("notes-data.json");
-    notes = JSON.parse(data);
-  } catch (e) {
-    notes = [];
-  };
 
-  var duplicateNotes = notes.filter(n => n.title == title);
+  var duplicateNotes = notes.filter(n => n.title === title);
 
   if (duplicateNotes.length === 0) {
     notes.push(note);
+    saveNotes(notes);
+    return note;
   }
 
-  fs.writeFileSync("notes-data.json", JSON.stringify(notes));
 };
 
 var getAll = () => {
-  console.log("Gettting all notes");
-  return [];
+  return fetchNotes();
 };
 
 var getNote = (title) => {
-  console.log("Gettting the note ", title);
-  return "";
+  var notes = fetchNotes();
+  var found = notes.filter(n => n.title === title);
+  if (found.length > 0) return found[0];
 };
 
 var deleteNote = (title) => {
-  console.log("Deleting the note ", title);
-  return "";
+  var notes = fetchNotes()
+  var newNotes = notes.filter(n => n.title !== title);
+  if (notes.length !== newNotes.length) {
+    saveNotes(newNotes);
+    return true;
+  }
 };
 
 // laternative way of exposing API usnig ES6 syntax:

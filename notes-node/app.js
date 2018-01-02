@@ -15,13 +15,32 @@ const argv = yargs.argv;
 var command = argv._[0];
 
 if (command === "add") {
-  notes.addNote(argv.title, argv.body);
+  var note = notes.addNote(argv.title, argv.body);
+  if (note) {
+    console.log(`Note {title: "${note.title}", body: "${note.body}"} was created.`);
+  } else {
+    console.error(`The note already exists. The title "${argv.title}" already taken.`);
+  }
 } else if (command == "list") {
-  notes.getAll();
+  // for (let n of notes.getAll()) {
+  //   console.log(`Note {title: "${n.title}", body: "${n.body}"}`);
+  // }
+  notes.getAll().forEach(n => {
+    console.log(`Note {title: "${n.title}", body: "${n.body}"}`);
+  });
 } else if (command == "read") {
-  notes.getNote(argv.title);
+  var note = notes.getNote(argv.title);
+  if (note) 
+    console.log(`Note {title: "${note.title}", body: "${note.body}"}`);
+  else
+    console.error(`Note with title "${argv.title}" not found.`);
 } else if (command == "remove") {
-  notes.deleteNote(argv.title);
+  var res = notes.deleteNote(argv.title);
+  if (res) {
+    console.log(`Note with title "${argv.title}" was deleted.`);
+  } else {
+    console.error(`Note with title "${argv.title}" not found.`);
+  }
 } else {
   console.log("Command not recognized");
 }
