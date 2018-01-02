@@ -17,7 +17,8 @@ var command = argv._[0];
 if (command === "add") {
   var note = notes.addNote(argv.title, argv.body);
   if (note) {
-    console.log(`Note {title: "${note.title}", body: "${note.body}"} was created.`);
+    console.log(`Note was created.`);
+    notes.logNote(note);
   } else {
     console.error(`The note already exists. The title "${argv.title}" already taken.`);
   }
@@ -26,12 +27,12 @@ if (command === "add") {
   //   console.log(`Note {title: "${n.title}", body: "${n.body}"}`);
   // }
   notes.getAll().forEach(n => {
-    console.log(`Note {title: "${n.title}", body: "${n.body}"}`);
+    notes.logNote(n);
   });
 } else if (command == "read") {
   var note = notes.getNote(argv.title);
   if (note) 
-    console.log(`Note {title: "${note.title}", body: "${note.body}"}`);
+    notes.logNote(note);
   else
     console.error(`Note with title "${argv.title}" not found.`);
 } else if (command == "remove") {
