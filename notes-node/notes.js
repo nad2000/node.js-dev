@@ -58,8 +58,9 @@ var deleteNote = (title) => {
 
 
 var logNote = note => {
-    console.log(`Title: ${note.title}`);
-    console.log(`Body: ${note.body}`);
+  debugger;
+  console.log(`* Title: ${note.title}`);
+  console.log(`* Body: ${note.body}`);
 }
 
 // laternative way of exposing API usnig ES6 syntax:
