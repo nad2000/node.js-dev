@@ -1,0 +1,11 @@
+{
+  "name": "weather-app",
+  "version": "0.1.0",
+  "description": "Demo app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Radomirs Cirskis <nad2000@gmail.com>",
+  "license": "ISC"
+}
