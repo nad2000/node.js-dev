@@ -1,0 +1,3 @@
+module.exports = {
+  DARKSKY_APIKEY: "XXXXXXXXXXXXXXXXXX"
+};
