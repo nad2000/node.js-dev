@@ -22,9 +22,9 @@ goecode.geocodeAddress(argv.address, (errorMessage, result) => {
     // console.log(JSON.stringify(result, undefined, 2));
     weather.getWeather(result.latitude, result.longitude, (errorMessage, result) => {
       if (errorMessage) {
-	console.log(errorMessage);
+        console.log(errorMessage);
       } else {
-	console.log(JSON.stringify(result, undefined, 2));
+        console.log(JSON.stringify(result, undefined, 2));
       }
     });
   }
