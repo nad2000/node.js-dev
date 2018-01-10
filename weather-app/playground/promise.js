@@ -26,11 +26,9 @@ asyncAdd(5, undefined).then((result) => {
 asyncAdd(5, '7').then((result) => {
   console.log("Success:", result);
   return asyncAdd(result, 33);
-}, (message) => {
-  console.log("Error:", message);
 }).then((result) => {
   console.log("Should be 45:", result);
-}, (message) => {
+}).catch((message) => {
   console.log("Error:", message);
 });
 // var somePromise = new Promise((resolve, reject) => {
