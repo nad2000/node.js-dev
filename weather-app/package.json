@@ -9,6 +9,7 @@
   "author": "Radomirs Cirskis <nad2000@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "nodemon": "^1.14.10",
     "request": "^2.83.0",
     "yargs": "^10.0.3"
   }
