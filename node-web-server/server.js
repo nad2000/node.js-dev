@@ -10,6 +10,13 @@ app.use(express.static(__dirname + "/public"));
 hbs.registerHelper("currentYear", () => new Date().getFullYear());
 hbs.registerHelper("screamIt", text => text.toUpperCase());
 
+// Logging middleware:
+app.use((req, res, next) => {
+  var now = new Date().toISOString();
+  console.log(`${now}: ${req.method} ${req.url}`);
+  next();
+});
+
 app.get("/", (req, res) => {
   // res.send("<h1>Hello Express!</h1>");
   // res.send({name: "Rad", likes: ["Cats", "Dogs", ]});
