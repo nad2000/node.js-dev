@@ -24,6 +24,13 @@ app.use((req, res, next) => {
   next();
 });
 
+// Maintenance
+app.use((req, res, next) => {
+  res.render("maintenance.hbs", {
+    pageTitle: "Maintenance"
+  });
+});
+
 app.get("/", (req, res) => {
   // res.send("<h1>Hello Express!</h1>");
   // res.send({name: "Rad", likes: ["Cats", "Dogs", ]});
