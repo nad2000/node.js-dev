@@ -6,7 +6,6 @@ var app = express();
 
 hbs.registerPartials(__dirname + "/views/partials");
 app.set("view engine", "hbs"); // this is optional
-app.use(express.static(__dirname + "/public"));
 
 hbs.registerHelper("currentYear", () => new Date().getFullYear());
 hbs.registerHelper("screamIt", text => text.toUpperCase());
@@ -30,6 +29,8 @@ app.use((req, res, next) => {
     pageTitle: "Maintenance"
   });
 });
+
+app.use(express.static(__dirname + "/public"));
 
 app.get("/", (req, res) => {
   // res.send("<h1>Hello Express!</h1>");
