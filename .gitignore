@@ -58,4 +58,7 @@ typings/
 .env
 tags
 config.js
+package-lock.json
+greetings.txt
+notes-data.json
 
