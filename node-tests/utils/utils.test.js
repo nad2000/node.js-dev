@@ -15,5 +15,18 @@ it(
 
 it(
   "shoud expect some value", () => {
-    expect(12).toNotBe(11);
+    //expect(12).toNotBe(11);
+    //expect({name: "nad2000"}).toBe({name: "nad2000"});  // should fail
+    expect({name: "nad2000"}).toEqual({name: "nad2000"}); // instead use toEqual
+    expect([2,3,4]).toInclude(2);
+    expect([2,3,4]).toExclude(6);
+    expect({
+      name: "nad2000",
+      age: 1000,
+      location: "New Zealand"
+    }).toInclude({
+      age: 1000
+    }).toExclude({
+      age: 42
+    });
   });
