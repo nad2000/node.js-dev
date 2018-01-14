@@ -53,6 +53,21 @@ app.get("/404", (req, res) => {
   });
 });
 
+app.get("/users", (req, res) => {
+  res.send([{
+    name: "nad2000",
+    age: 42
+  },
+  {
+    name: "user123",
+    age: 1000
+  },
+  {
+    name: "userABC",
+    age: 1000
+  }]);
+});
+
 app.get("/about", (req, res) => {
   //res.send("<h1>About Page</h1>");
   res.render("about.hbs", {

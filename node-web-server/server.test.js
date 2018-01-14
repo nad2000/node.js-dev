@@ -22,3 +22,13 @@ it("expect 404 NOT FOUND", done => {
     .end(done);
 });
 
+it("shoud find myself among the users", done => {
+  request(app)
+    .get("/users")
+    .expect(200)
+    .expect(res => {
+      expect(res.body).toInclude({name: "nad2000", age: 42});
+    })
+    .end(done);
+});
+
