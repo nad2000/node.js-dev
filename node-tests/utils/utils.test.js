@@ -1,5 +1,6 @@
 const utils = require("./utils");
 const expect = require("expect");
+
 it(
   "should add two numbers", () => {
     var res = utils.add(33, 11);
@@ -11,7 +12,6 @@ it(
     var res = utils.square(3);
     expect(res).toBe(9).toBeA("number");
   });
-
 
 it(
   "shoud expect some value", () => {
@@ -47,3 +47,11 @@ it(
     });
   });
 
+it(
+  "should async add two numbers", (done) => {
+    // done is for indicating the testing is done....
+    var res = utils.asyncAdd(4, 3, sum => {
+      expect(sum).toBe(7).toBeA("number");
+      done();
+    });
+  });
