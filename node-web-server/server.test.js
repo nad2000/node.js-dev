@@ -14,8 +14,10 @@ it("expect 404 NOT FOUND", done => {
   request(app)
     .get("/404")
     .expect(404)
-    .expect({
-      error: "Page not found."
+    .expect(res => {
+      expect(res.body).toInclude({
+        error: "Page not found."
+      });
     })
     .end(done);
 });
