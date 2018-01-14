@@ -24,12 +24,12 @@ app.use((req, res, next) => {
   next();
 });
 
-// Maintenance
-app.use((req, res, next) => {
-  res.render("maintenance.hbs", {
-    pageTitle: "Maintenance"
-  });
-});
+// // Maintenance
+// app.use((req, res, next) => {
+//   res.render("maintenance.hbs", {
+//     pageTitle: "Maintenance"
+//   });
+// });
 
 app.use(express.static(__dirname + "/public"));
 
@@ -42,10 +42,28 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/hello", (req, res) => {
+  res.send("<h1>Hello Express!</h1>");
+});
+
+app.get("/404", (req, res) => {
+  res.status(404).send({
+    error: "Page not found.",
+    name: "Todo App v1.0"
+  });
+});
+
 app.get("/about", (req, res) => {
   //res.send("<h1>About Page</h1>");
   res.render("about.hbs", {
     pageTitle: "About Page"
+  });
+});
+
+app.get("/projects", (req, res) => {
+  //res.send("<h1>About Page</h1>");
+  res.render("projects.hbs", {
+    pageTitle: "Projects"
   });
 });
 
@@ -59,3 +77,4 @@ app.listen(port, () => {
   console.log(`Server is up on port ${port}`);
 });
 
+module.exports.app = app;
