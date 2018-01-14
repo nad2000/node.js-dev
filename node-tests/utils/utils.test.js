@@ -8,7 +8,7 @@ it(
   });
 
 it(
-  "should shquare a number", () => {
+  "should square a number", () => {
     var res = utils.square(3);
     expect(res).toBe(9).toBeA("number");
   });
@@ -52,6 +52,15 @@ it(
     // done is for indicating the testing is done....
     var res = utils.asyncAdd(4, 3, sum => {
       expect(sum).toBe(7).toBeA("number");
+      done();
+    });
+  });
+
+it(
+  "should square a number", (done) => {
+    // done is for indicating the testing is done....
+    var res = utils.asyncSquare(9, square => {
+      expect(square).toBe(81).toBeA("number");
       done();
     });
   });
