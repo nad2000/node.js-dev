@@ -3,7 +3,7 @@ const expect = require("expect");
 var app = require("./server").app;
 
 
-describe("Web Appllication", () => {
+describe("Web Appllication", () => {  // 'describe' can be nested...
   it("should return Hello Express response", done => {
     request(app)
       .get("/hello")
